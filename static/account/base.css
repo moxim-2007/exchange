@@ -1,0 +1,43 @@
+body {
+    background: linear-gradient(45deg, greenyellow, dodgerblue);
+    font-family: "Sansita Swashed", cursive;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: linear-gradient(45deg, dodgerblue, greenyellow);
+}
+
+img {
+    border-radius: 50%;
+}
+
+.login li {
+    display: inline;
+    float: right;
+}
+
+.home li {
+    display: inline;
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: #000000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: rgba(255, 255, 255, 0.17);
+}
+
+.active {
+    background-color: #04AA6D;
+}

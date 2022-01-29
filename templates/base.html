@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'account/base.css' %}">
+    <title>Home</title>
+</head>
+<body>
+<div class="home">
+    <ul>
+        <li><a href="/">Home</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="/edit/">{{ user.username }}
+                <img src="{{ user.image.url }}" alt="" width="50" height="50">
+            </a>
+            </li>
+        {% endif %}
+{#        <li><a href="/list_movies">List movies</a></li>#}
+    </ul>
+</div>
+<div class="login">
+    <ul>
+        <li><a href="/logout">Logout</a></li>
+
+        <li><a href="/login">Login</a></li>
+    </ul>
+</div>
+<div>
+    {% block content %}
+    {% endblock content %}
+</div>
+</body>
+</html>
