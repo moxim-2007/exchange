@@ -16,3 +16,9 @@ class CreateProductForm(forms.Form):
     )
     price = forms.IntegerField(label="Price of product:")
     duration = forms.DurationField(label="Duration of insurance:")
+
+
+class CreateResponseForm(forms.Form):
+    full_name = forms.CharField(label="Your fullname")
+    phone = forms.CharField(label="Your phone")
+    email = forms.CharField(label="Your email")

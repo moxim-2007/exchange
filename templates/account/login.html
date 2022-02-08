@@ -1,8 +1,7 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'account/style.css' %}">
-<title>Login</title>
+{% extends "base.html" %}
 
-<div class="center">
+{% block content %}
+    <div class="center" style="margin-left: 500px; margin-bottom: 50px">
     <h1>Enter in your account</h1>
     <p>If you don't have an account <a href="{% url "register" %}">registerhere</a></p>
     <form action="." method="post">
@@ -20,3 +19,4 @@
         </div>
     </form>
 </div>
+{% endblock %}

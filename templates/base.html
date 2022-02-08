@@ -1,31 +1,57 @@
 <!DOCTYPE html>
 {% load static %}
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'account/base.css' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'account/bootstrap.css' %}">
     <title>Home</title>
 </head>
 <body>
-<div class="home">
-    <ul>
-        <li><a href="/">Home</a></li>
-        {% if user.is_authenticated %}
-            <li><a href="/edit/">{{ user.username }}
-                <img src="{{ user.image.url }}" alt="" width="50" height="50">
-            </a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            {% if user.is_authenticated %}
+                <nav class="navbar navbar-dark bg-dark">
+                    <a class="navbar-brand" href="/edit/">
+                        <img src="{{ user.image.url }}" width="30" height="30"
+                             class="d-inline-block align-top" alt="">
+                        {{ user.username }}
+                    </a>
+                </nav>
+            {% endif %}
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
             </li>
-        {% endif %}
-{#        <li><a href="/list_movies">List movies</a></li>#}
-    </ul>
-</div>
-<div class="login">
-    <ul>
-        <li><a href="/logout">Logout</a></li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/list_product/all/">Products<span class="sr-only">(current)</span></a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/responses/{{ user.id }}">Responses<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/list_product/{{ user.id }}/">My products<span class="sr-only">(current)</span></a>
+                </li>
+            {% endif %}
+        </ul>
 
-        <li><a href="/login">Login</a></li>
-    </ul>
-</div>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/login/">Login <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                {% if user.is_authenticated %}
+                    <a class="nav-link" href="/logout/">Logout <span class="sr-only">(current)</span></a>
+                {% endif %}
+            </li>
+        </ul>
+        {#        <form class="form-inline my-2 my-lg-0">#}
+        {#            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">#}
+        {#            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
+        {#        </form>#}
+    </div>
+</nav>
 <div>
     {% block content %}
     {% endblock content %}
