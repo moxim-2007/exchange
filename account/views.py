@@ -1,62 +1,58 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import check_password
 from django.contrib import messages
+from django.views.generic.base import TemplateView
+from django.views.generic.edit import CreateView, UpdateView
+from django.contrib.auth.views import LoginView, LogoutView
 
 from . import forms
+from .models import Company
 
 
-def index(request):
-    return render(request, "index.html")
+class HomeView(TemplateView):
+    template_name = "index.html"
 
 
-def my_login(request):
-    if request.method == "POST":
-        form = forms.LoginForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            user = authenticate(username=cd["username"], password=cd["password"])
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect("/")
-                else:
-                    messages.add_message(request, messages.ERROR, "disabled account")
-            else:
-                messages.add_message(request, messages.ERROR, "invalid login")
-    else:
-        form = forms.LoginForm()
-    return render(request, "account/login.html", {"form": form})
+class CompanyLogin(LoginView):
+    template_name = "account/login.html"
+    next_page = "/"
 
 
-def register(request):
-    if request.method == "POST":
-        user_form = forms.RegForm(data=request.POST, files=request.FILES)
+class CompanyLogout(LogoutView):
+    next_page = "/"
+
+
+class CompanyRegister(CreateView):
+    model = Company
+    form_class = forms.RegForm
+    success_url = "/"
+    template_name = "account/register.html"
+
+    def post(self, request, *args, **kwargs):
+        user_form = self.form_class(data=request.POST, files=request.FILES)
         if user_form.is_valid():
             new_user = user_form.save(commit=False)
             cd = user_form.cleaned_data
             new_user.set_password(cd["password"])
             new_user.save()
             user = authenticate(username=cd["username"], password=cd["password"])
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect("/")
-            return redirect("/")
-    else:
-        user_form = forms.RegForm()
-        return render(request, "account/register.html", {"user_form": user_form})
+            if user and user.is_active:
+                login(request, user)
+                return redirect("/")
+
+    def get(self, request, *args, **kwargs):
+        return render(request, "account/register.html", {"user_form": self.form_class})
 
 
-def my_logout(request):
-    logout(request)
-    return redirect("/")
+class CompanyEdit(UpdateView):
+    model = Company
+    form_class = forms.UserEditForm
+    success_url = "/"
+    template_name = "account/edit.html"
+    template_name_suffix = "_update_form"
 
-
-@login_required
-def edit(request):
-    if request.method == "POST":
+    def post(self, request, *args, **kwargs):
         user_form = forms.UserEditForm(
             instance=request.user, data=request.POST, files=request.FILES
         )
@@ -82,12 +78,12 @@ def edit(request):
             if "image" in request.FILES:
                 user_form.image = request.FILES["image"]
                 user_form.save()
+            return redirect("/")
 
-    else:
+    def get(self, request, *args, **kwargs):
         user_form = forms.UserEditForm(instance=request.user)
         return render(
             request,
             "account/edit.html",
             {"user_form": user_form},
         )
-    return redirect("/")
