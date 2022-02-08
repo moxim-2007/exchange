@@ -11,7 +11,7 @@ class Company(AbstractUser):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     username = models.CharField(
-        verbose_name="company account login",
+        verbose_name="Company username for authorization",
         error_messages={"unique": "Username already exists."},
         max_length=150,
         unique=True,
@@ -19,7 +19,7 @@ class Company(AbstractUser):
     )
     name = models.CharField(
         max_length=128,
-        verbose_name="name of company",
+        verbose_name="Name of company",
         unique=True,
         error_messages={"unique": "A company with that name already exists."},
     )

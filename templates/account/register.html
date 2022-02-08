@@ -1,9 +1,7 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'account/style.css' %}">
+{% extends "base.html" %}
 
-<title>Login</title>
-
-<div class="center">
+{% block content %}
+    <div class="center" style="margin-left: 500px; margin-bottom: 50px">
     <h1>Create an account</h1>
     <form action="." method="post" enctype="multipart/form-data">
         <div class="inputbox">
@@ -15,3 +13,4 @@
         </div>
     </form>
 </div>
+{% endblock %}

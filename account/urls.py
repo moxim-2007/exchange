@@ -4,11 +4,11 @@ from exchange import settings
 from . import views
 
 urlpatterns = [
-    path("", views.index, name="index"),
-    path("login/", views.my_login, name="login"),
-    path("register/", views.register, name="register"),
-    path("logout/", views.my_logout, name="logout"),
-    path("edit/", views.edit, name="edit"),
+    path("", views.HomeView.as_view(), name="home"),
+    path("login/", views.CompanyLogin.as_view(), name="login"),
+    path("register/", views.CompanyRegister.as_view(), name="register"),
+    path("logout/", views.CompanyLogout.as_view(), name="logout"),
+    path("edit/", views.CompanyEdit.as_view(), name="edit"),
 ]
 
 if settings.DEBUG:
