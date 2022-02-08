@@ -14,15 +14,15 @@ class CreateCategory(CreateView):
     template_name = "insure/create_object.html"
 
     def post(self, request, *args, **kwargs):
-        category_form = forms.CreateCategoryForm(data=request.POST)
+        category_form = self.form_class(data=request.POST)
         if category_form.is_valid():
             cd = category_form.cleaned_data
-            caregory = Category.objects.create(name=cd["name"])
+            caregory = self.model.objects.create(name=cd["name"])
             caregory.save()
             return redirect("/create_category")
 
     def get(self, request, *args, **kwargs):
-        category_form = forms.CreateCategoryForm()
+        category_form = self.form_class()
         return render(request, "insure/create_object.html", {"form": category_form})
 
 
@@ -33,7 +33,7 @@ class CreateProduct(CreateView):
     template_name = "insure/create_object.html"
 
     def post(self, request, *args, **kwargs):
-        product_form = forms.CreateProductForm(data=request.POST)
+        product_form = self.form_class(data=request.POST)
         if product_form.is_valid():
             cd = product_form.cleaned_data
             product = Product.objects.create(
@@ -50,31 +50,31 @@ class CreateProduct(CreateView):
             return redirect("/create_product")
 
     def get(self, request, *args, **kwargs):
-        product_form = forms.CreateProductForm()
+        product_form = self.form_class()
         return render(request, "insure/create_object.html", {"form": product_form})
 
 
 class CreateResponse(CreateView):
     model = Response
     form_class = forms.CreateResponseForm
-    success_url = "/list_product"
+    success_url = "/list_product/all"
     template_name = "insure/create_object.html"
 
     def post(self, request, *args, **kwargs):
-        response_form = forms.CreateResponseForm(data=request.POST)
+        response_form = self.form_class(data=request.POST)
         if response_form.is_valid():
             cd = response_form.cleaned_data
-            response = Response.objects.create(
+            response = self.model.objects.create(
                 full_name=cd["full_name"],
                 phone=cd["phone"],
                 email=cd["email"],
                 product=Product.objects.get(id=self.kwargs["product"]),
             )
             response.save()
-            return redirect("/list_product")
+            return redirect("/list_product/all")
 
     def get(self, request, *args, **kwargs):
-        response_form = forms.CreateResponseForm()
+        response_form = self.form_class()
         return render(request, "insure/create_object.html", {"form": response_form})
 
 
@@ -89,7 +89,7 @@ class ListProducts(ListView):
         if self.kwargs["company"] != "all":
             company = Company.objects.get(id=self.kwargs["company"])
             products = Product.objects.filter(company=company)
-            context["products"] = ProductInfo.objects.filter(product__in=products)
+            context["products"] = self.model.objects.filter(product__in=products)
         return context
 
 
@@ -103,5 +103,5 @@ class ListResponses(ListView):
         context = super().get_context_data(**kwargs)
         company = Company.objects.get(username=self.request.user.username)
         products = Product.objects.filter(company=company)
-        context["responses"] = Response.objects.filter(product__in=products)
+        context["responses"] = self.model.objects.filter(product__in=products)
         return context
