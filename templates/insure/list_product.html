@@ -2,8 +2,20 @@
 
 {% block content %}
     <title>Insure</title>
-    <div class="center">
-        <table class="table table-hover">
+    <div>
+        <table class="table table-bordered table-sm table-hover">
+            <form>
+                <select name="filter">
+                    <option selected="selected" disabled>Filter</option>
+                    <option value="product.company.name">company</option>
+                    <option value="product.name">name</option>
+                    <option value="product.description">description</option>
+                    <option value="product.category.name">category</option>
+                    <option value="price">price</option>
+                    <option value="duration">duration</option>
+                </select>
+                <button class="btn btn-outline-success btn-sm" type="submit" value="Selected">filter</button>
+            </form>
             <thead>
             <tr>
                 <th scope="col">Company</th>

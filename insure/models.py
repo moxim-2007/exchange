@@ -24,7 +24,7 @@ class Product(models.Model):
 
 class ProductInfo(models.Model):
     price = models.IntegerField()
-    duration = models.DurationField()
+    duration = models.IntegerField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):

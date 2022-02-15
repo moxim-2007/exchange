@@ -15,7 +15,7 @@ class CreateProductForm(forms.Form):
         choices=[(category.name, category.name) for category in Category.objects.all()],
     )
     price = forms.IntegerField(label="Price of product:")
-    duration = forms.DurationField(label="Duration of insurance:")
+    duration = forms.IntegerField(label="Duration (month) of insurance:")
 
 
 class CreateResponseForm(forms.Form):

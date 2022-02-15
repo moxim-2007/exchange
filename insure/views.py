@@ -5,6 +5,7 @@ from django.views.generic.list import ListView
 from . import forms
 from .models import Category, Product, ProductInfo, Response
 from account.models import Company
+from .services import search_product
 
 
 class CreateCategory(CreateView):
@@ -28,7 +29,7 @@ class CreateCategory(CreateView):
 
 class CreateProduct(CreateView):
     model = [Product, ProductInfo]
-    form_class = forms.CreateCategoryForm
+    form_class = forms.CreateProductForm
     success_url = "/"
     template_name = "insure/create_object.html"
 
@@ -86,10 +87,18 @@ class ListProducts(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if self.kwargs["company"] != "all":
-            company = Company.objects.get(id=self.kwargs["company"])
+        query = self.request.GET.get("query")
+        company_id = self.kwargs["company"]
+        if company_id != "all":
+            company = Company.objects.get(id=company_id)
             products = Product.objects.filter(company=company)
             context["products"] = self.model.objects.filter(product__in=products)
+        result = []
+        for q in search_product(query, self.request.GET.get("filter")):
+            for product in context["products"]:
+                if product == q:
+                    result.append(product)
+        context["products"] = result
         return context
 
 
