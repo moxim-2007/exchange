@@ -24,16 +24,23 @@
                 <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/list_product/all/">Products<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/list_product/all">Products<span class="sr-only">(current)</span></a>
             </li>
             {% if user.is_authenticated %}
                 <li class="nav-item active">
                     <a class="nav-link" href="/responses/{{ user.id }}">Responses<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/list_product/{{ user.id }}/">My products<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/list_product/{{ user.id }}">My products<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/create_product/">Create product<span class="sr-only">(current)</span></a>
                 </li>
             {% endif %}
+            <form action="." method="get" class="form-inline my-22 my-lg-1" style="margin-left: 50px">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </ul>
 
         <ul class="navbar-nav ml-auto">
@@ -46,10 +53,7 @@
                 {% endif %}
             </li>
         </ul>
-        {#        <form class="form-inline my-2 my-lg-0">#}
-        {#            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">#}
-        {#            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
-        {#        </form>#}
+
     </div>
 </nav>
 <div>
