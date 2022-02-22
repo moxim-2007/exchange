@@ -10,7 +10,6 @@ def search_product(query, filtration):
                 query=query,
                 fields=[
                     "product.name",
-                    "product.description",
                     "product.category.name",
                     "product.company.name",
                 ],

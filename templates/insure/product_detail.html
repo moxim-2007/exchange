@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <title>Insure</title>
+    <div>
+        <table class="table table-bordered table-sm table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Company</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">Duration</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="clickable"
+                onclick="window.location='/response/{{ product.product_id }}'">
+                <td><img src="{{ object.product.company.image.url }}" width="30" height="30"
+                         class="d-inline-block align-top" alt="">
+                    {{ object.product.company.name }}</td>
+                <td>{{ object.product.name }}</td>
+                <td>{{ object.description }}</td>
+                <td>{{ object.product.category.name }}</td>
+                <td>{{ object.price }}</td>
+                <td>{{ object.duration }}</td>
+                <td class="table-borderless">
+                    {% if user.is_authenticated and user.id == object.product.company.id %}
+                        <button type="button" class="btn btn-primary btn-sm">delete</button>
+                    {% endif %}
+
+                    <button type="button" onclick="window.location='/response/{{ product.id }}'"
+                            class="btn btn-primary btn-sm">response
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}
