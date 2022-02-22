@@ -137,3 +137,5 @@ AUTH_USER_MODEL = "account.company"
 ELASTICSEARCH_DSL = {
     "default": {"hosts": "elasticsearch:9200"},
 }
+
+CELERY_BROKER_URL = "amqp://rabbitmq:5672"

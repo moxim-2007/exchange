@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+
+from datetime import datetime
 
 from . import forms
 from .models import Category, Product, ProductInfo, Response
 from account.models import Company
 from .services import search_product
+from .tasks import send_response_notification
 
 
 class CreateCategory(CreateView):
@@ -39,13 +43,15 @@ class CreateProduct(CreateView):
             cd = product_form.cleaned_data
             product = Product.objects.create(
                 name=cd["name"],
-                description=cd["description"],
                 category=Category.objects.get(name=cd["category"]),
                 company=Company.objects.get(username=request.user.username),
             )
             product.save()
             productInfo = ProductInfo.objects.create(
-                price=cd["price"], duration=cd["duration"], product=product
+                description=cd["description"],
+                price=cd["price"],
+                duration=cd["duration"],
+                product=product
             )
             productInfo.save()
             return redirect("/create_product")
@@ -53,6 +59,25 @@ class CreateProduct(CreateView):
     def get(self, request, *args, **kwargs):
         product_form = self.form_class()
         return render(request, "insure/create_object.html", {"form": product_form})
+
+
+class DeleteProduct(DeleteView):
+    model = Product
+    template_name = "insure/confirm_delete.html"
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        productinfo = ProductInfo.objects.get(product=self.object)
+        success_url = self.get_success_url()
+        productinfo.delete()
+        self.object.delete()
+        return redirect(success_url)
+
+    def get_success_url(self):
+        return f"/list_product/{self.object.company.id}"
+
+    def get_object(self, queryset=None):
+        return self.model.objects.get(id=self.kwargs["product"])
 
 
 class CreateResponse(CreateView):
@@ -72,6 +97,16 @@ class CreateResponse(CreateView):
                 product=Product.objects.get(id=self.kwargs["product"]),
             )
             response.save()
+            send_response_notification.delay(
+                {
+                    "email": response.email,
+                    "phone": response.phone,
+                    "full_name": response.full_name,
+                    "company": response.product.company.name,
+                    "product": response.product.name,
+                    "response_date": datetime.now(),
+                }
+            )
             return redirect("/list_product/all")
 
     def get(self, request, *args, **kwargs):
@@ -80,7 +115,7 @@ class CreateResponse(CreateView):
 
 
 class ListProducts(ListView):
-    model = ProductInfo
+    model = Product
     paginate_by = 10
     template_name = "insure/list_product.html"
     context_object_name = "products"
@@ -91,8 +126,7 @@ class ListProducts(ListView):
         company_id = self.kwargs["company"]
         if company_id != "all":
             company = Company.objects.get(id=company_id)
-            products = Product.objects.filter(company=company)
-            context["products"] = self.model.objects.filter(product__in=products)
+            context["products"] = self.model.objects.filter(company=company)
         result = []
         for q in search_product(query, self.request.GET.get("filter")):
             for product in context["products"]:
@@ -100,6 +134,15 @@ class ListProducts(ListView):
                     result.append(product)
         context["products"] = result
         return context
+
+
+class ProductDetail(DetailView):
+    model = ProductInfo
+    template_name = "insure/product_detail.html"
+
+    def get_object(self, queryset=None):
+        product = Product.objects.get(id=self.kwargs["product"])
+        return self.model.objects.get(product=product)
 
 
 class ListResponses(ListView):

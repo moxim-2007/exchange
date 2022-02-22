@@ -6,14 +6,15 @@ from .models import Product, Category, Company, ProductInfo
 
 @registry.register_document
 class ProductDocument(Document):
-    duration = fields.IntegerField()
-    price = fields.IntegerField()
-    product = fields.ObjectField(
+    name = fields.TextField(fielddata=True),
+    category = fields.ObjectField(
         properties={
             "name": fields.TextField(fielddata=True),
-            "description": fields.TextField(fielddata=True),
-            "category": fields.ObjectField(properties={"name": fields.TextField(fielddata=True)}),
-            "company": fields.ObjectField(properties={"name": fields.TextField(fielddata=True)}),
+        }
+    )
+    company = fields.ObjectField(
+        properties={
+            "name": fields.TextField(fielddata=True),
         }
     )
 
@@ -22,17 +23,7 @@ class ProductDocument(Document):
         settings = {"number_of_shards": 1, "number_of_replicas": 0}
 
     class Django:
-        model = ProductInfo
+        model = Product
         related_models = [
-            Company,
-            Category,
-            Product,
+            ProductInfo,
         ]
-
-    def get_queryset(self):
-        """Return the queryset that should be indexed by this document"""
-        return super(ProductDocument, self).get_queryset().select_related("product")
-
-    def get_instances_from_related(self, related_instance):
-        """Retrieve the Service instance(s) from the related models"""
-        return related_instance.productinfo_set.all()

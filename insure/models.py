@@ -14,7 +14,6 @@ class Category(models.Model):
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=256)
-    description = models.TextField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
 
@@ -25,6 +24,7 @@ class Product(models.Model):
 class ProductInfo(models.Model):
     price = models.IntegerField()
     duration = models.IntegerField()
+    description = models.TextField(blank=True, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):

@@ -4,8 +4,8 @@ services:
   web:
     build: .
     command: sh -c "python manage.py migrate &&
-                    yes | python manage.py search_index --rebuild &&
-                    python manage.py runserver 0.0.0.0:8000"
+      yes | python manage.py search_index --rebuild &&
+      python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
@@ -13,6 +13,9 @@ services:
     depends_on:
       elasticsearch:
         condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
     environment:
@@ -21,3 +24,26 @@ services:
       - "9200:9200"
     healthcheck:
       test: curl --silent --fail localhost:9200/_cluster/health
+    mem_reservation: 500m
+
+  celery:
+    restart: always
+    build: .
+    volumes:
+      - .:/code
+    command: celery -A exchange worker -l info
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    mem_reservation: 500m
+
+  rabbitmq:
+    container_name: "rabbitmq"
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+    mem_reservation: 500m
+
