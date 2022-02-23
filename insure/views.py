@@ -8,7 +8,7 @@ from datetime import datetime
 from . import forms
 from .models import Category, Product, ProductInfo, Response
 from account.models import Company
-from .services import search_product
+from .services import search_product, add_page_visit, get_count_visit
 from .tasks import send_response_notification
 
 
@@ -51,7 +51,7 @@ class CreateProduct(CreateView):
                 description=cd["description"],
                 price=cd["price"],
                 duration=cd["duration"],
-                product=product
+                product=product,
             )
             productInfo.save()
             return redirect("/create_product")
@@ -143,6 +143,13 @@ class ProductDetail(DetailView):
     def get_object(self, queryset=None):
         product = Product.objects.get(id=self.kwargs["product"])
         return self.model.objects.get(product=product)
+
+    def get_context_data(self, **kwargs):
+        add_page_visit(self.kwargs["product"])
+        context = super().get_context_data(**kwargs)
+        if self.request.user.id == self.object.product.company.id:
+            context["count_visit"] = int(get_count_visit(str(self.object.product.id)))
+        return context
 
 
 class ListResponses(ListView):

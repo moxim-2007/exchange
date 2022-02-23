@@ -1,21 +1,22 @@
 {% extends "base.html" %}
+
 {% block content %}
-    <div class="center">
-        <h1>Enter in your account</h1>
-        <p>If you don't have an account <a href="{% url "register" %}">registerhere</a></p>
-        <form action="." method="post">
-            <div class="inputbox">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <ul class="messages">
-                    {% for message in messages %}
-                        <li style="color: red">{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="inputbox">
-                <input type="submit" value="Login">
-            </div>
-        </form>
-    </div>
+    <div class="center" style="margin-left: 500px; margin-bottom: 50px">
+    <h1>Enter in your account</h1>
+    <p>If you don't have an account <a href="{% url "register" %}">registerhere</a></p>
+    <form action="." method="post">
+        <div class="inputbox">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li style="color: red">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="inputbox">
+            <input type="submit" value="Login">
+        </div>
+    </form>
+</div>
 {% endblock %}
