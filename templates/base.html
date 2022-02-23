@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'account/bootstrap.css' %}">
     <title>Home</title>
 </head>
 <body>
@@ -32,8 +31,7 @@
                     <a class="nav-link" href="/responses/{{ user.id }}">Responses<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/list_product/{{ user.id }}">My products<span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/list_product/{{ user.id }}">My products<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/create_product/">Create product<span class="sr-only">(current)</span></a>

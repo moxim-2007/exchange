@@ -6,7 +6,7 @@ from .models import Product, Category, Company, ProductInfo
 
 @registry.register_document
 class ProductDocument(Document):
-    name = fields.TextField(fielddata=True),
+    name = (fields.TextField(fielddata=True),)
     category = fields.ObjectField(
         properties={
             "name": fields.TextField(fielddata=True),

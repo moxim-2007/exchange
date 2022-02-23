@@ -15,8 +15,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="clickable"
-                onclick="window.location='/response/{{ product.product_id }}'">
+            <tr>
                 <td><img src="{{ object.product.company.image.url }}" width="30" height="30"
                          class="d-inline-block align-top" alt="">
                     {{ object.product.company.name }}</td>
@@ -33,6 +32,7 @@
                     <button type="button" onclick="window.location='/response/{{ product.id }}'"
                             class="btn btn-primary btn-sm">response
                     </button>
+                    {{ count_visit }}
                 </td>
             </tr>
             </tbody>

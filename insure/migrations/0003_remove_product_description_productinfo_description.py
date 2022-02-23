@@ -6,17 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('insure', '0002_alter_productinfo_duration'),
+        ("insure", "0002_alter_productinfo_duration"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='product',
-            name='description',
+            model_name="product",
+            name="description",
         ),
         migrations.AddField(
-            model_name='productinfo',
-            name='description',
+            model_name="productinfo",
+            name="description",
             field=models.TextField(blank=True, null=True),
         ),
     ]

@@ -139,3 +139,6 @@ ELASTICSEARCH_DSL = {
 }
 
 CELERY_BROKER_URL = "amqp://rabbitmq:5672"
+
+REDIS_HOST = "redis"
+REDIS_PORT = "6379"
