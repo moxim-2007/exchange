@@ -9,10 +9,7 @@
                     <option selected="selected" disabled>Filter</option>
                     <option value="product.company.name">company</option>
                     <option value="product.name">name</option>
-                    <option value="product.description">description</option>
                     <option value="product.category.name">category</option>
-                    <option value="price">price</option>
-                    <option value="duration">duration</option>
                 </select>
                 <button class="btn btn-outline-success btn-sm" type="submit" value="Selected">filter</button>
             </form>
@@ -20,24 +17,17 @@
             <tr>
                 <th scope="col">Company</th>
                 <th scope="col">Name</th>
-                <th scope="col">Description</th>
                 <th scope="col">Category</th>
-                <th scope="col">Price</th>
-                <th scope="col">Duration</th>
             </tr>
             </thead>
             <tbody>
             {% for product in products %}
-                <tr class="clickable"
-                    onclick="window.location='/response/{{ product.product_id }}'">
-                    <td><img src="{{ product.product.company.image.url }}" width="30" height="30"
+                <tr onclick="window.location='/product_info/{{ product.id }}'">
+                    <td><img src="{{ product.company.image.url }}" width="30" height="30"
                              class="d-inline-block align-top" alt="">
-                        {{ product.product.company.name }}</td>
-                    <td>{{ product.product.name }}</td>
-                    <td>{{ product.product.description }}</td>
-                    <td>{{ product.product.category.name }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.duration }}</td>
+                        {{ product.company.name }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.category.name }}</td>
                 </tr>
             {% endfor %}
             </tbody>

@@ -9,7 +9,9 @@ urlpatterns = [
     path(
         "delete_product/<str:product>/", login_required(views.DeleteProduct.as_view())
     ),
-    path("product_info/<str:product>/", login_required(views.ProductDetail.as_view())),
+    path(
+        "product_info/<str:product>/", views.ProductDetail.as_view()
+    ),
     re_path(
         r"^list_product/(?P<company>.*)/(?P<query>.*)(?P<filter_name>.*)$",
         views.ListProducts.as_view(),

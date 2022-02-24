@@ -12,10 +12,9 @@ def search_product(query, filtration):
             MultiMatch(
                 query=query,
                 fields=[
-                    "product.name",
-                    "product.description",
-                    "product.category.name",
-                    "product.company.name",
+                    "name",
+                    "company.name",
+                    "category.name",
                 ],
             )
         )
