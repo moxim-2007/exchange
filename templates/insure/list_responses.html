@@ -2,26 +2,24 @@
 
 {% block content %}
     <title>Insure</title>
-    <div class="center">
-        <table class="table table-hover">
-            <thead>
+    <table class="table table-bordered table-sm table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Full name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Product</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for response in responses %}
             <tr>
-                <th scope="col">Full name</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Email</th>
-                <th scope="col">Product</th>
+                <td>{{ response.full_name }}</td>
+                <td>{{ response.phone }}</td>
+                <td>{{ response.email }}</td>
+                <td>{{ response.product.name }}</td>
             </tr>
-            </thead>
-            <tbody>
-            {% for response in responses %}
-                <tr>
-                    <td>{{ response.full_name }}</td>
-                    <td>{{ response.phone }}</td>
-                    <td>{{ response.email }}</td>
-                    <td>{{ response.product.name }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock content %}

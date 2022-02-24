@@ -6,7 +6,7 @@ from .models import Product, Category, Company, ProductInfo
 
 @registry.register_document
 class ProductDocument(Document):
-    name = (fields.TextField(fielddata=True),)
+    name = fields.TextField(fielddata=True)
     category = fields.ObjectField(
         properties={
             "name": fields.TextField(fielddata=True),
@@ -27,3 +27,9 @@ class ProductDocument(Document):
         related_models = [
             ProductInfo,
         ]
+
+    def get_queryset(self):
+        return super(ProductDocument, self).get_queryset().select_related("company", "category")
+
+    def get_instances_from_related(self, related_instance):
+        return related_instance.product
