@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <title>Insure</title>
+    <div>
+        <table class="table table-bordered table-sm table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Company</th>
+                <th scope="col">Description</th>
+                <th scope="col">Legal address</th>
+                <th scope="col">Products</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><img src="{{ object.image.url }}" width="30" height="30"
+                         class="d-inline-block align-top" alt="">
+                    {{ object.name }}</td>
+                <td>{{ object.description }}</td>
+                <td>{{ object.legal_address }}</td>
+                <td><a href="/list_product/{{ object.id }}"> product list </a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

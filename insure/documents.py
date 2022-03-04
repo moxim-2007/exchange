@@ -29,7 +29,11 @@ class ProductDocument(Document):
         ]
 
     def get_queryset(self):
-        return super(ProductDocument, self).get_queryset().select_related("company", "category")
+        return (
+            super(ProductDocument, self)
+            .get_queryset()
+            .select_related("company", "category")
+        )
 
     def get_instances_from_related(self, related_instance):
         return related_instance.product

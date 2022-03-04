@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic.detail import DetailView
 
 from . import forms
 from .models import Company
@@ -62,9 +63,9 @@ class CompanyEdit(UpdateView):
             new_password = user_form.cleaned_data["new_password"]
             repeat_password = user_form.cleaned_data["repeat_password"]
             if (
-                check_password(old_password, request.user.password)
-                and new_password == repeat_password
-                and old_password != new_password
+                    check_password(old_password, request.user.password)
+                    and new_password == repeat_password
+                    and old_password != new_password
             ):
                 request.user.set_password(new_password)
             else:
@@ -87,3 +88,11 @@ class CompanyEdit(UpdateView):
             "account/edit.html",
             {"user_form": user_form},
         )
+
+
+class CompanyDetail(DetailView):
+    model = Company
+    template_name = "account/company_detail.html"
+
+    def get_object(self, queryset=None):
+        return self.model.objects.get(id=self.kwargs["company"])

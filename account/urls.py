@@ -1,14 +1,15 @@
 from django.urls import path
 from django.conf.urls.static import static
 from exchange import settings
-from . import views
+from .views import HomeView, CompanyLogin, CompanyEdit, CompanyRegister, CompanyLogout, CompanyDetail
 
 urlpatterns = [
-    path("", views.HomeView.as_view(), name="home"),
-    path("login/", views.CompanyLogin.as_view(), name="login"),
-    path("register/", views.CompanyRegister.as_view(), name="register"),
-    path("logout/", views.CompanyLogout.as_view(), name="logout"),
-    path("edit/", views.CompanyEdit.as_view(), name="edit"),
+    path("", HomeView.as_view(), name="home"),
+    path("login/", CompanyLogin.as_view(), name="login"),
+    path("register/", CompanyRegister.as_view(), name="register"),
+    path("logout/", CompanyLogout.as_view(), name="logout"),
+    path("edit/", CompanyEdit.as_view(), name="edit"),
+    path("company_info/<str:company>/", CompanyDetail.as_view()),
 ]
 
 if settings.DEBUG:

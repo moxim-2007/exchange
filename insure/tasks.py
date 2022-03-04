@@ -1,4 +1,5 @@
 import requests
+import os
 
 from django.template.loader import get_template
 
@@ -10,7 +11,7 @@ def send_response_notification(response):
     body_template = get_template("insure/mail.html")
     params = {
         "format": "json",
-        "api_key": "6hnncnaoxqgbnqcsejn1omx467iksgk8mfjbpd7e",
+        "api_key": os.getenv("UNISENDER_API_KEY"),
         "email": response["email"],
         "sender_name": "maxim",
         "sender_email": "insure2022@yandex.ru",
@@ -19,4 +20,4 @@ def send_response_notification(response):
         "list_id": 1,
     }
     requests.post("https://api.unisender.com/ru/api/sendEmail", params=params)
-    return "as"
+    return "task done"

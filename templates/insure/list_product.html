@@ -7,9 +7,9 @@
             <form>
                 <select name="filter">
                     <option selected="selected" disabled>Filter</option>
-                    <option value="product.company.name">company</option>
-                    <option value="product.name">name</option>
-                    <option value="product.category.name">category</option>
+                    <option value="company.name">company</option>
+                    <option value="name">name</option>
+                    <option value="category.name">category</option>
                 </select>
                 <button class="btn btn-outline-success btn-sm" type="submit" value="Selected">filter</button>
             </form>
@@ -25,7 +25,7 @@
                 <tr onclick="window.location='/product_info/{{ product.id }}'">
                     <td><img src="{{ product.company.image.url }}" width="30" height="30"
                              class="d-inline-block align-top" alt="">
-                        {{ product.company.name }}</td>
+                        <a href="/company_info/{{ product.company.id }}"> {{ product.company.name }} </a></td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.category.name }}</td>
                 </tr>
