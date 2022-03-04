@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf.urls.static import static
 from exchange import settings
-from views import HomeView, CompanyLogin, CompanyEdit, CompanyRegister, CompanyLogout
+from .views import HomeView, CompanyLogin, CompanyEdit, CompanyRegister, CompanyLogout, CompanyDetail
 
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
@@ -9,6 +9,7 @@ urlpatterns = [
     path("register/", CompanyRegister.as_view(), name="register"),
     path("logout/", CompanyLogout.as_view(), name="logout"),
     path("edit/", CompanyEdit.as_view(), name="edit"),
+    path("company_info/<str:company>/", CompanyDetail.as_view()),
 ]
 
 if settings.DEBUG:

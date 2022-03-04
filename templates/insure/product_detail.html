@@ -25,16 +25,15 @@
                 <td>{{ object.price }}</td>
                 <td>{{ object.duration }}</td>
                 <td class="table-borderless">
+                    <button type="button" onclick="window.location='/response/{{ object.product.id }}'"
+                            class="btn btn-primary btn-sm">response
+                    </button>
                     {% if user.is_authenticated and user.id == object.product.company.id %}
                         <button type="button" onclick="window.location='/delete_product/{{ object.product.id }}'"
                                 class="btn btn-primary btn-sm">delete
                         </button>
-                        {{ count_visit }}
+                        views: {{ count_visit }}
                     {% endif %}
-
-                    <button type="button" onclick="window.location='/response/{{ object.product.id }}'"
-                            class="btn btn-primary btn-sm">response
-                    </button>
                 </td>
             </tr>
             </tbody>
