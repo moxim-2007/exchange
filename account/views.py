@@ -63,9 +63,9 @@ class CompanyEdit(UpdateView):
             new_password = user_form.cleaned_data["new_password"]
             repeat_password = user_form.cleaned_data["repeat_password"]
             if (
-                    check_password(old_password, request.user.password)
-                    and new_password == repeat_password
-                    and old_password != new_password
+                check_password(old_password, request.user.password)
+                and new_password == repeat_password
+                and old_password != new_password
             ):
                 request.user.set_password(new_password)
             else:

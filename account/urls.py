@@ -1,7 +1,14 @@
 from django.urls import path
 from django.conf.urls.static import static
 from exchange import settings
-from .views import HomeView, CompanyLogin, CompanyEdit, CompanyRegister, CompanyLogout, CompanyDetail
+from .views import (
+    HomeView,
+    CompanyLogin,
+    CompanyEdit,
+    CompanyRegister,
+    CompanyLogout,
+    CompanyDetail,
+)
 
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
