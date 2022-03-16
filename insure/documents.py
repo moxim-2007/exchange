@@ -1,7 +1,7 @@
 from django_elasticsearch_dsl import Document, fields
 from django_elasticsearch_dsl.registries import registry
 
-from .models import Product, Category, Company, ProductInfo
+from .models import Product, ProductInfo
 
 
 @registry.register_document
@@ -36,4 +36,5 @@ class ProductDocument(Document):
         )
 
     def get_instances_from_related(self, related_instance):
-        return related_instance.product
+        if isinstance(related_instance, ProductInfo):
+            return related_instance.product
