@@ -10,8 +10,8 @@ A exchange for insurance services where companies can list their products and cu
 5. Elasticsearch (search engine)
 
 # Run
-1. ###Сreate a file `.env` in the root of the project
-2. ###Сreate variables and assign values
+### 1. Сreate a file `.env` in the root of the project
+### 2. Сreate variables and assign values
    ```
    DJANGO_SECRET_KEY
    ELASTICSEARCH_HOST
@@ -22,7 +22,7 @@ A exchange for insurance services where companies can list their products and cu
    REDIS_PORT
    UNISENDER_API_KEY
    ```
-3. ###Example `.env`:
+### 3. Example `.env`:
    ```
    DJANGO_SECRET_KEY=autogenerate
    ELASTICSEARCH_HOST=elasticsearch
@@ -33,7 +33,7 @@ A exchange for insurance services where companies can list their products and cu
    REDIS_PORT=6379
    UNISENDER_API_KEY=6hnncnaoxqgbnqcsejn1omx467iksgk8mfjbpd7e
    ```
-4. ###Run
+### 4. Run
    `docker-compose up --build`
-5. ###Run tests
+### 5. Run tests
    `docker-compose exec web python manage.py test`
