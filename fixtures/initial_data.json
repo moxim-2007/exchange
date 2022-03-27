@@ -1,1 +1,667 @@
-[{"model": "auth.permission", "pk": 1, "fields": {"name": "Can add log entry", "content_type": 1, "codename": "add_logentry"}}, {"model": "auth.permission", "pk": 2, "fields": {"name": "Can change log entry", "content_type": 1, "codename": "change_logentry"}}, {"model": "auth.permission", "pk": 3, "fields": {"name": "Can delete log entry", "content_type": 1, "codename": "delete_logentry"}}, {"model": "auth.permission", "pk": 4, "fields": {"name": "Can view log entry", "content_type": 1, "codename": "view_logentry"}}, {"model": "auth.permission", "pk": 5, "fields": {"name": "Can add permission", "content_type": 2, "codename": "add_permission"}}, {"model": "auth.permission", "pk": 6, "fields": {"name": "Can change permission", "content_type": 2, "codename": "change_permission"}}, {"model": "auth.permission", "pk": 7, "fields": {"name": "Can delete permission", "content_type": 2, "codename": "delete_permission"}}, {"model": "auth.permission", "pk": 8, "fields": {"name": "Can view permission", "content_type": 2, "codename": "view_permission"}}, {"model": "auth.permission", "pk": 9, "fields": {"name": "Can add group", "content_type": 3, "codename": "add_group"}}, {"model": "auth.permission", "pk": 10, "fields": {"name": "Can change group", "content_type": 3, "codename": "change_group"}}, {"model": "auth.permission", "pk": 11, "fields": {"name": "Can delete group", "content_type": 3, "codename": "delete_group"}}, {"model": "auth.permission", "pk": 12, "fields": {"name": "Can view group", "content_type": 3, "codename": "view_group"}}, {"model": "auth.permission", "pk": 13, "fields": {"name": "Can add content type", "content_type": 4, "codename": "add_contenttype"}}, {"model": "auth.permission", "pk": 14, "fields": {"name": "Can change content type", "content_type": 4, "codename": "change_contenttype"}}, {"model": "auth.permission", "pk": 15, "fields": {"name": "Can delete content type", "content_type": 4, "codename": "delete_contenttype"}}, {"model": "auth.permission", "pk": 16, "fields": {"name": "Can view content type", "content_type": 4, "codename": "view_contenttype"}}, {"model": "auth.permission", "pk": 17, "fields": {"name": "Can add session", "content_type": 5, "codename": "add_session"}}, {"model": "auth.permission", "pk": 18, "fields": {"name": "Can change session", "content_type": 5, "codename": "change_session"}}, {"model": "auth.permission", "pk": 19, "fields": {"name": "Can delete session", "content_type": 5, "codename": "delete_session"}}, {"model": "auth.permission", "pk": 20, "fields": {"name": "Can view session", "content_type": 5, "codename": "view_session"}}, {"model": "auth.permission", "pk": 21, "fields": {"name": "Can add user", "content_type": 6, "codename": "add_company"}}, {"model": "auth.permission", "pk": 22, "fields": {"name": "Can change user", "content_type": 6, "codename": "change_company"}}, {"model": "auth.permission", "pk": 23, "fields": {"name": "Can delete user", "content_type": 6, "codename": "delete_company"}}, {"model": "auth.permission", "pk": 24, "fields": {"name": "Can view user", "content_type": 6, "codename": "view_company"}}, {"model": "auth.permission", "pk": 25, "fields": {"name": "Can add category", "content_type": 7, "codename": "add_category"}}, {"model": "auth.permission", "pk": 26, "fields": {"name": "Can change category", "content_type": 7, "codename": "change_category"}}, {"model": "auth.permission", "pk": 27, "fields": {"name": "Can delete category", "content_type": 7, "codename": "delete_category"}}, {"model": "auth.permission", "pk": 28, "fields": {"name": "Can view category", "content_type": 7, "codename": "view_category"}}, {"model": "auth.permission", "pk": 29, "fields": {"name": "Can add product", "content_type": 8, "codename": "add_product"}}, {"model": "auth.permission", "pk": 30, "fields": {"name": "Can change product", "content_type": 8, "codename": "change_product"}}, {"model": "auth.permission", "pk": 31, "fields": {"name": "Can delete product", "content_type": 8, "codename": "delete_product"}}, {"model": "auth.permission", "pk": 32, "fields": {"name": "Can view product", "content_type": 8, "codename": "view_product"}}, {"model": "auth.permission", "pk": 33, "fields": {"name": "Can add response", "content_type": 9, "codename": "add_response"}}, {"model": "auth.permission", "pk": 34, "fields": {"name": "Can change response", "content_type": 9, "codename": "change_response"}}, {"model": "auth.permission", "pk": 35, "fields": {"name": "Can delete response", "content_type": 9, "codename": "delete_response"}}, {"model": "auth.permission", "pk": 36, "fields": {"name": "Can view response", "content_type": 9, "codename": "view_response"}}, {"model": "auth.permission", "pk": 37, "fields": {"name": "Can add product info", "content_type": 10, "codename": "add_productinfo"}}, {"model": "auth.permission", "pk": 38, "fields": {"name": "Can change product info", "content_type": 10, "codename": "change_productinfo"}}, {"model": "auth.permission", "pk": 39, "fields": {"name": "Can delete product info", "content_type": 10, "codename": "delete_productinfo"}}, {"model": "auth.permission", "pk": 40, "fields": {"name": "Can view product info", "content_type": 10, "codename": "view_productinfo"}}, {"model": "contenttypes.contenttype", "pk": 1, "fields": {"app_label": "admin", "model": "logentry"}}, {"model": "contenttypes.contenttype", "pk": 2, "fields": {"app_label": "auth", "model": "permission"}}, {"model": "contenttypes.contenttype", "pk": 3, "fields": {"app_label": "auth", "model": "group"}}, {"model": "contenttypes.contenttype", "pk": 4, "fields": {"app_label": "contenttypes", "model": "contenttype"}}, {"model": "contenttypes.contenttype", "pk": 5, "fields": {"app_label": "sessions", "model": "session"}}, {"model": "contenttypes.contenttype", "pk": 6, "fields": {"app_label": "account", "model": "company"}}, {"model": "contenttypes.contenttype", "pk": 7, "fields": {"app_label": "insure", "model": "category"}}, {"model": "contenttypes.contenttype", "pk": 8, "fields": {"app_label": "insure", "model": "product"}}, {"model": "contenttypes.contenttype", "pk": 9, "fields": {"app_label": "insure", "model": "response"}}, {"model": "contenttypes.contenttype", "pk": 10, "fields": {"app_label": "insure", "model": "productinfo"}}, {"model": "sessions.session", "pk": "x8zojrvyq4ao70c9j1dqgapcy7ob3iih", "fields": {"session_data": ".eJxVjjkOwkAQBP-yMbsaz96EznmDNXsMNiBb8hEh_o4tOYCw1VWtfouOtrXvtqXO3VDEVVCNNlEJsmFP0mhGGbwukthGawkd6CAuv1qi_Kzj4ZYHjfdJ5Wlc5yGpA1Fnu6jbVOqrPdm_gZ6WfreNIY86c_VeN2BTxoq-YjEMORpNCMkBQdqD8-CIA2hswv6TM0eI4vMF9ZVArg:1nPnlv:6ANWpVUIof6cAfJ-YW_-g3vrqENIIzXfZI7dTUibDt8", "expire_date": "2022-03-17T15:53:43.794Z"}}, {"model": "account.company", "pk": "6688a0ba-35d6-426f-b875-ed97ab9d0707", "fields": {"password": "pbkdf2_sha256$320000$WqBhmvdBoLa6yj8uzhBUIB$ol43K6//yKI9LwK4RG9qAgInF3gMUoCCGnUyadBKLw4=", "last_login": "2022-03-03T15:51:36.594Z", "is_superuser": false, "first_name": "", "last_name": "", "email": "qwerty@gmail.com", "is_staff": false, "is_active": true, "date_joined": "2022-03-03T15:51:35.847Z", "username": "qwerty", "name": "Страхование.ру", "description": "компания", "legal_address": "Москва улица Тверская дом 68\\12", "image": "default_image.png", "groups": [], "user_permissions": []}}, {"model": "account.company", "pk": "ae95bad8-1f7a-43f2-873d-af5955a26038", "fields": {"password": "pbkdf2_sha256$320000$3IWPevpmQYNo41V2Tj3KuN$PhXHtUfbd4z0fOJkoblFIVflPVCLrAbUq1g4lm9b3eQ=", "last_login": "2022-03-03T15:53:43.711Z", "is_superuser": false, "first_name": "", "last_name": "", "email": "mazharov.maks@mail.ru", "is_staff": false, "is_active": true, "date_joined": "2022-02-21T13:54:36.958Z", "username": "admin", "name": "РосГосСтрах", "description": "крутая компания", "legal_address": "Товарищеская 32", "image": "default_image.png", "groups": [], "user_permissions": []}}, {"model": "insure.category", "pk": 1, "fields": {"name": "автомобили"}}, {"model": "insure.category", "pk": 2, "fields": {"name": "жизнь"}}, {"model": "insure.category", "pk": 5, "fields": {"name": "недвижимость"}}, {"model": "insure.product", "pk": "26ef7e6c-5bab-4e40-b1be-dc91d1cfd6c5", "fields": {"name": "легковой автомобиль", "category": 1, "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"}}, {"model": "insure.product", "pk": "338f7ccf-d7bb-491b-aebf-a74a7f421018", "fields": {"name": "дом", "category": 5, "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"}}, {"model": "insure.product", "pk": "9a545165-f81d-4654-be71-71f47f977397", "fields": {"name": "дом", "category": 5, "company": "6688a0ba-35d6-426f-b875-ed97ab9d0707"}}, {"model": "insure.product", "pk": "9ee55971-9492-490b-b3a9-686ef898dbad", "fields": {"name": "дом", "category": 5, "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"}}, {"model": "insure.product", "pk": "dfa0c43b-320c-4787-8c9d-2a580b666830", "fields": {"name": "перелом конечностей", "category": 2, "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"}}, {"model": "insure.product", "pk": "e9c7d427-4463-48ba-a3bd-b1aee4a264a4", "fields": {"name": "дача", "category": 5, "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"}}, {"model": "insure.product", "pk": "ea56bf20-e345-41ad-bb84-d9fbd93a1e58", "fields": {"name": "легковой автомобиль", "category": 1, "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"}}, {"model": "insure.product", "pk": "f1c3cc28-0ba4-421c-832d-02f0485f918f", "fields": {"name": "легковой автомобиль", "category": 1, "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"}}, {"model": "insure.productinfo", "pk": 13, "fields": {"price": 10000, "duration": 12, "description": "автомобили до 130 л.с.", "product": "ea56bf20-e345-41ad-bb84-d9fbd93a1e58"}}, {"model": "insure.productinfo", "pk": 14, "fields": {"price": 15000, "duration": 12, "description": "автомобили от 130 до 300 л.с.", "product": "26ef7e6c-5bab-4e40-b1be-dc91d1cfd6c5"}}, {"model": "insure.productinfo", "pk": 15, "fields": {"price": 22000, "duration": 12, "description": "автомобили более 300 л.с.", "product": "f1c3cc28-0ba4-421c-832d-02f0485f918f"}}, {"model": "insure.productinfo", "pk": 16, "fields": {"price": 13000, "duration": 18, "description": "травма полученная в ходе несчастного случая", "product": "dfa0c43b-320c-4787-8c9d-2a580b666830"}}, {"model": "insure.productinfo", "pk": 17, "fields": {"price": 20000, "duration": 6, "description": "возмещение ущерба при пожаре", "product": "338f7ccf-d7bb-491b-aebf-a74a7f421018"}}, {"model": "insure.productinfo", "pk": 18, "fields": {"price": 35000, "duration": 12, "description": "возмещение ущерба при пожаре", "product": "9ee55971-9492-490b-b3a9-686ef898dbad"}}, {"model": "insure.productinfo", "pk": 19, "fields": {"price": 12000, "duration": 10, "description": "возмещение ущерба при несчастном случае", "product": "e9c7d427-4463-48ba-a3bd-b1aee4a264a4"}}, {"model": "insure.productinfo", "pk": 20, "fields": {"price": 15000, "duration": 12, "description": "возмещение ущерба полученного в результате стихийных бедствий", "product": "9a545165-f81d-4654-be71-71f47f977397"}}]
+[
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 4,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 4,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 4,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 4,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 5,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 5,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 5,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 5,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 6,
+      "codename": "add_company"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 6,
+      "codename": "change_company"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 6,
+      "codename": "delete_company"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view user",
+      "content_type": 6,
+      "codename": "view_company"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add category",
+      "content_type": 7,
+      "codename": "add_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change category",
+      "content_type": 7,
+      "codename": "change_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete category",
+      "content_type": 7,
+      "codename": "delete_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view category",
+      "content_type": 7,
+      "codename": "view_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add product",
+      "content_type": 8,
+      "codename": "add_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change product",
+      "content_type": 8,
+      "codename": "change_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete product",
+      "content_type": 8,
+      "codename": "delete_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view product",
+      "content_type": 8,
+      "codename": "view_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add response",
+      "content_type": 9,
+      "codename": "add_response"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change response",
+      "content_type": 9,
+      "codename": "change_response"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete response",
+      "content_type": 9,
+      "codename": "delete_response"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view response",
+      "content_type": 9,
+      "codename": "view_response"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add product info",
+      "content_type": 10,
+      "codename": "add_productinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change product info",
+      "content_type": 10,
+      "codename": "change_productinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete product info",
+      "content_type": 10,
+      "codename": "delete_productinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view product info",
+      "content_type": 10,
+      "codename": "view_productinfo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "account",
+      "model": "company"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "insure",
+      "model": "category"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "insure",
+      "model": "product"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "insure",
+      "model": "response"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "insure",
+      "model": "productinfo"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "x8zojrvyq4ao70c9j1dqgapcy7ob3iih",
+    "fields": {
+      "session_data": ".eJxVjjkOwkAQBP-yMbsaz96EznmDNXsMNiBb8hEh_o4tOYCw1VWtfouOtrXvtqXO3VDEVVCNNlEJsmFP0mhGGbwukthGawkd6CAuv1qi_Kzj4ZYHjfdJ5Wlc5yGpA1Fnu6jbVOqrPdm_gZ6WfreNIY86c_VeN2BTxoq-YjEMORpNCMkBQdqD8-CIA2hswv6TM0eI4vMF9ZVArg:1nPnlv:6ANWpVUIof6cAfJ-YW_-g3vrqENIIzXfZI7dTUibDt8",
+      "expire_date": "2022-03-17T15:53:43.794Z"
+    }
+  },
+  {
+    "model": "account.company",
+    "pk": "6688a0ba-35d6-426f-b875-ed97ab9d0707",
+    "fields": {
+      "password": "pbkdf2_sha256$320000$WqBhmvdBoLa6yj8uzhBUIB$ol43K6//yKI9LwK4RG9qAgInF3gMUoCCGnUyadBKLw4=",
+      "last_login": "2022-03-03T15:51:36.594Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "email": "qwerty@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-03-03T15:51:35.847Z",
+      "username": "qwerty",
+      "name": "Страхование.ру",
+      "description": "компания",
+      "legal_address": "Москва улица Тверская дом 68\\12",
+      "image": "default_image.png",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "account.company",
+    "pk": "ae95bad8-1f7a-43f2-873d-af5955a26038",
+    "fields": {
+      "password": "pbkdf2_sha256$320000$3IWPevpmQYNo41V2Tj3KuN$PhXHtUfbd4z0fOJkoblFIVflPVCLrAbUq1g4lm9b3eQ=",
+      "last_login": "2022-03-03T15:53:43.711Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "email": "mazharov.maks@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-02-21T13:54:36.958Z",
+      "username": "admin",
+      "name": "РосГосСтрах",
+      "description": "крутая компания",
+      "legal_address": "Товарищеская 32",
+      "image": "default_image.png",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "insure.category",
+    "pk": 1,
+    "fields": {
+      "name": "автомобили"
+    }
+  },
+  {
+    "model": "insure.category",
+    "pk": 2,
+    "fields": {
+      "name": "жизнь"
+    }
+  },
+  {
+    "model": "insure.category",
+    "pk": 5,
+    "fields": {
+      "name": "недвижимость"
+    }
+  },
+  {
+    "model": "insure.product",
+    "pk": "26ef7e6c-5bab-4e40-b1be-dc91d1cfd6c5",
+    "fields": {
+      "name": "легковой автомобиль",
+      "category": 1,
+      "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"
+    }
+  },
+  {
+    "model": "insure.product",
+    "pk": "338f7ccf-d7bb-491b-aebf-a74a7f421018",
+    "fields": {
+      "name": "дом",
+      "category": 5,
+      "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"
+    }
+  },
+  {
+    "model": "insure.product",
+    "pk": "9a545165-f81d-4654-be71-71f47f977397",
+    "fields": {
+      "name": "дом",
+      "category": 5,
+      "company": "6688a0ba-35d6-426f-b875-ed97ab9d0707"
+    }
+  },
+  {
+    "model": "insure.product",
+    "pk": "9ee55971-9492-490b-b3a9-686ef898dbad",
+    "fields": {
+      "name": "дом",
+      "category": 5,
+      "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"
+    }
+  },
+  {
+    "model": "insure.product",
+    "pk": "dfa0c43b-320c-4787-8c9d-2a580b666830",
+    "fields": {
+      "name": "перелом конечностей",
+      "category": 2,
+      "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"
+    }
+  },
+  {
+    "model": "insure.product",
+    "pk": "e9c7d427-4463-48ba-a3bd-b1aee4a264a4",
+    "fields": {
+      "name": "дача",
+      "category": 5,
+      "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"
+    }
+  },
+  {
+    "model": "insure.product",
+    "pk": "ea56bf20-e345-41ad-bb84-d9fbd93a1e58",
+    "fields": {
+      "name": "легковой автомобиль",
+      "category": 1,
+      "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"
+    }
+  },
+  {
+    "model": "insure.product",
+    "pk": "f1c3cc28-0ba4-421c-832d-02f0485f918f",
+    "fields": {
+      "name": "легковой автомобиль",
+      "category": 1,
+      "company": "ae95bad8-1f7a-43f2-873d-af5955a26038"
+    }
+  },
+  {
+    "model": "insure.productinfo",
+    "pk": 13,
+    "fields": {
+      "price": 10000,
+      "duration": 12,
+      "description": "автомобили до 130 л.с.",
+      "product": "ea56bf20-e345-41ad-bb84-d9fbd93a1e58"
+    }
+  },
+  {
+    "model": "insure.productinfo",
+    "pk": 14,
+    "fields": {
+      "price": 15000,
+      "duration": 12,
+      "description": "автомобили от 130 до 300 л.с.",
+      "product": "26ef7e6c-5bab-4e40-b1be-dc91d1cfd6c5"
+    }
+  },
+  {
+    "model": "insure.productinfo",
+    "pk": 15,
+    "fields": {
+      "price": 22000,
+      "duration": 12,
+      "description": "автомобили более 300 л.с.",
+      "product": "f1c3cc28-0ba4-421c-832d-02f0485f918f"
+    }
+  },
+  {
+    "model": "insure.productinfo",
+    "pk": 16,
+    "fields": {
+      "price": 13000,
+      "duration": 18,
+      "description": "травма полученная в ходе несчастного случая",
+      "product": "dfa0c43b-320c-4787-8c9d-2a580b666830"
+    }
+  },
+  {
+    "model": "insure.productinfo",
+    "pk": 17,
+    "fields": {
+      "price": 20000,
+      "duration": 6,
+      "description": "возмещение ущерба при пожаре",
+      "product": "338f7ccf-d7bb-491b-aebf-a74a7f421018"
+    }
+  },
+  {
+    "model": "insure.productinfo",
+    "pk": 18,
+    "fields": {
+      "price": 35000,
+      "duration": 12,
+      "description": "возмещение ущерба при пожаре",
+      "product": "9ee55971-9492-490b-b3a9-686ef898dbad"
+    }
+  },
+  {
+    "model": "insure.productinfo",
+    "pk": 19,
+    "fields": {
+      "price": 12000,
+      "duration": 10,
+      "description": "возмещение ущерба при несчастном случае",
+      "product": "e9c7d427-4463-48ba-a3bd-b1aee4a264a4"
+    }
+  },
+  {
+    "model": "insure.productinfo",
+    "pk": 20,
+    "fields": {
+      "price": 15000,
+      "duration": 12,
+      "description": "возмещение ущерба полученного в результате стихийных бедствий",
+      "product": "9a545165-f81d-4654-be71-71f47f977397"
+    }
+  }
+]

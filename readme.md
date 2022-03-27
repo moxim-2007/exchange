@@ -34,10 +34,6 @@ A exchange for insurance services where companies can list their products and cu
    UNISENDER_API_KEY=6hnncnaoxqgbnqcsejn1omx467iksgk8mfjbpd7e
    ```
 ### 4. Run
-   #### If you want to get basic data then run:  
-   ```
-   python manage.py loaddata fixtures/initial_data.json
-   docker-compose up --build
-   ```
-   #### Default run:
    `docker-compose up --build`
+### 5. Run tests
+   `docker-compose exec web python manage.py test`

@@ -43,9 +43,20 @@
                             class="sr-only">(current)</span></a>
                 </li>
             {% endif %}
-            <form action="." method="get" class="form-inline my-22 my-lg-1" style="margin-left: 50px">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <form action="." method="get" class="form-inline" style="margin-left: 50px">
+                <div class="input-group">
+                    <label class="sr-only" for="query">Search</label>
+                    <input type="text" class="col-8 input-group mb-2 mr-sm-2" id="query" name="query"
+                           placeholder="Search"
+                           value="{{ request.GET.query|default_if_none:'' }}">
+                    <button type="submit" class="col-3 btn btn-light mb-2">Search</button>
+                </div>
+                <select class="form-control mb-2 mr-sm-2" id="filter" name="filter" onchange="this.form.submit()">
+                    <option selected="selected" disabled >filter</option>
+                    <option value="company.name">company</option>
+                    <option value="name">name</option>
+                    <option value="category.name">category</option>
+                </select>
             </form>
         </ul>
 

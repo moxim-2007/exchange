@@ -1,4 +1,4 @@
-from elasticsearch_dsl.query import MultiMatch
+from elasticsearch_dsl.query import Q
 import redis
 
 from .documents import ProductDocument
@@ -6,16 +6,18 @@ from django.conf import settings
 
 
 def search_product(query, filtration):
-    products = ProductDocument.search()
+    products = ProductDocument.search()[0:10000]
     if query and query != "":
         products = products.query(
-            MultiMatch(
+            Q(
+                "multi_match",
                 query=query,
                 fields=[
                     "name",
                     "company.name",
                     "category.name",
                 ],
+                fuzziness="AUTO",
             )
         )
     if filtration:

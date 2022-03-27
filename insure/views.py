@@ -116,24 +116,23 @@ class CreateResponse(CreateView):
 
 class ListProducts(ListView):
     model = Product
-    paginate_by = 10
     template_name = "insure/list_product.html"
+    paginate_by = 10
     context_object_name = "products"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_queryset(self):
         query = self.request.GET.get("query")
         company_id = self.kwargs["company"]
+        queryset = self.model.objects.all()
         if company_id != "all":
             company = Company.objects.get(id=company_id)
-            context["products"] = self.model.objects.filter(company=company)
+            queryset = self.model.objects.filter(company=company)
         result = []
-        for q in search_product(query, self.request.GET.get("filter")):
-            for product in context["products"]:
+        for q in search_product(query, self.request.GET.get("filters")):
+            for product in queryset:
                 if product == q:
                     result.append(product)
-        context["products"] = result
-        return context
+        return result
 
 
 class ProductDetail(DetailView):
@@ -158,9 +157,8 @@ class ListResponses(ListView):
     template_name = "insure/list_responses.html"
     context_object_name = "responses"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_queryset(self):
         company = Company.objects.get(username=self.request.user.username)
         products = Product.objects.filter(company=company)
-        context["responses"] = self.model.objects.filter(product__in=products)
-        return context
+        queryset = self.model.objects.filter(product__in=products)
+        return queryset
