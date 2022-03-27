@@ -1,8 +1,6 @@
-from django.test import RequestFactory, TestCase, Client
+from django.test import TestCase, Client
 from django.core.management import call_command
-from django.urls import resolve, reverse
 
-from .views import CreateCategory, ListProducts
 from .services import get_count_visit
 from .models import Product
 from exchange.settings import DATABASES
@@ -23,8 +21,8 @@ class ListProductTestCase(TestCase):
 
     def test_pagination(self):
         response = self.client.get(self.url)
-        self.assertTrue('is_paginated' in response.context)
-        self.assertTrue(response.context['is_paginated'])
+        self.assertTrue("is_paginated" in response.context)
+        self.assertTrue(response.context["is_paginated"])
         self.assertTrue(len(response.context["products"]) == 10)
 
     def test_list_all_products(self):
@@ -66,4 +64,7 @@ class ProductDetailTestCase(TestCase):
     def test_countvisut(self):
         product = Product.objects.get(name="яблоко")
         response = self.client.get(f"{self.url}{product.id}/")
-        self.assertEqual(get_count_visit(str(response.context["object"].product.id)), get_count_visit(str(product.id)))
+        self.assertEqual(
+            get_count_visit(str(response.context["object"].product.id)),
+            get_count_visit(str(product.id)),
+        )
