@@ -6,7 +6,7 @@ from django.conf import settings
 
 
 def search_product(query, filtration):
-    products = ProductDocument.search()
+    products = ProductDocument.search()[0:10000]
     if query and query != "":
         products = products.query(
             Q(

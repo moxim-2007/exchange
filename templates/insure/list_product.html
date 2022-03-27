@@ -4,15 +4,6 @@
     <title>Insure</title>
     <div>
         <table class="table table-bordered table-sm table-hover">
-            <form>
-                <select name="filter">
-                    <option selected="selected" disabled>Filter</option>
-                    <option value="company.name">company</option>
-                    <option value="name">name</option>
-                    <option value="category.name">category</option>
-                </select>
-                <button class="btn btn-outline-success btn-sm" type="submit" value="Selected">filter</button>
-            </form>
             <thead>
             <tr>
                 <th scope="col">Company</th>
@@ -32,5 +23,49 @@
             {% endfor %}
             </tbody>
         </table>
+    </div>
+    <div>
+        <nav>
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li><a class="page-link"
+                           href="javascript:addOrUpdateUrlParam('page', {{ page_obj.previous_page_number }})">&laquo;</a>
+                    </li>
+                {% else %}
+                    <li class=" page-link"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in page_obj.paginator.page_range %}
+                    {% if page_obj.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link"> {{ i }} <span class="sr-only">(current)</span></a>
+                        </li>
+                    {% else %}
+                        <li><a class="page-link" href="javascript:addOrUpdateUrlParam('page', {{ i }})">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <li><a class="page-link"
+                           href="javascript:addOrUpdateUrlParam('page', {{ page_obj.next_page_number }})">&raquo;</a>
+                    </li>
+                {% else %}
+                    <li class="page-link"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <script>
+            function addOrUpdateUrlParam(name, value) {
+                var href = window.location.href;
+                var regex = new RegExp("[&\\?]" + name + "=");
+                if (regex.test(href)) {
+                    regex = new RegExp("([&\\?])" + name + "=\\d+");
+                    window.location.href = href.replace(regex, "$1" + name + "=" + value);
+                } else {
+                    if (href.indexOf("?") > -1)
+                        window.location.href = href + "&" + name + "=" + value;
+                    else
+                        window.location.href = href + "?" + name + "=" + value;
+                }
+            }
+        </script>
     </div>
 {% endblock content %}

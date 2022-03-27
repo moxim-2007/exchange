@@ -36,5 +36,4 @@ class ProductDocument(Document):
         )
 
     def get_instances_from_related(self, related_instance):
-        if isinstance(related_instance, ProductInfo):
-            return related_instance.product
+        return related_instance.product

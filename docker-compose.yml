@@ -3,7 +3,8 @@ version: "3.8"
 services:
   web:
     build: .
-    command: sh -c "python manage.py migrate &&
+    command: sh -c "python manage.py migrate --skip-checks &&
+      python manage.py loaddata fixtures/initial_data.json &&
       yes | python manage.py search_index --rebuild &&
       python manage.py runserver 0.0.0.0:8000"
     volumes:
