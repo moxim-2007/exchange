@@ -128,7 +128,7 @@ class ListProducts(ListView):
             company = Company.objects.get(id=company_id)
             queryset = self.model.objects.filter(company=company)
         result = []
-        for q in search_product(query, self.request.GET.get("filters")):
+        for q in search_product(query, self.request.GET.get("filter")):
             for product in queryset:
                 if product == q:
                     result.append(product)

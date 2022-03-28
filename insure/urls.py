@@ -17,7 +17,7 @@ urlpatterns = [
     path("delete_product/<str:product>/", login_required(DeleteProduct.as_view())),
     path("product_info/<str:product>/", ProductDetail.as_view()),
     re_path(
-        r"^list_product/(?P<company>.*)/(?P<query>.*)(?P<filter_name>.*)$",
+        r"^list_product/(?P<company>.*)/(?P<query>.*)(?P<filter>.*)$",
         ListProducts.as_view(),
         name="products",
     ),
