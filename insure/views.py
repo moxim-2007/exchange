@@ -67,6 +67,8 @@ class DeleteProduct(DeleteView):
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
+        if request.user.id != self.object.company.id:
+            return Exception("You don't have permission to do this")
         productinfo = ProductInfo.objects.get(product=self.object)
         success_url = self.get_success_url()
         productinfo.delete()
