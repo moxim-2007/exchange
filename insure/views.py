@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.contrib import messages
 
 from datetime import datetime
 
@@ -68,16 +69,17 @@ class DeleteProduct(DeleteView):
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
         productinfo = ProductInfo.objects.get(product=self.object)
-        success_url = self.get_success_url()
         productinfo.delete()
         self.object.delete()
-        return redirect(success_url)
+        return super(DeleteProduct, self).delete(*args, **kwargs)
 
     def get_success_url(self):
         return f"/list_product/{self.object.company.id}"
 
     def get_object(self, queryset=None):
-        return self.model.objects.get(id=self.kwargs["product"])
+        product = self.model.objects.get(id=self.kwargs["product"])
+        if self.request.user.id == product.company.id:
+            return product
 
 
 class CreateResponse(CreateView):
@@ -128,7 +130,7 @@ class ListProducts(ListView):
             company = Company.objects.get(id=company_id)
             queryset = self.model.objects.filter(company=company)
         result = []
-        for q in search_product(query, self.request.GET.get("filters")):
+        for q in search_product(query, self.request.GET.get("filter")):
             for product in queryset:
                 if product == q:
                     result.append(product)
