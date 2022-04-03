@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.contrib import messages
 
 from datetime import datetime
 
@@ -67,19 +68,18 @@ class DeleteProduct(DeleteView):
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
-        if request.user.id != self.object.company.id:
-            return Exception("You don't have permission to do this")
         productinfo = ProductInfo.objects.get(product=self.object)
-        success_url = self.get_success_url()
         productinfo.delete()
         self.object.delete()
-        return redirect(success_url)
+        return super(DeleteProduct, self).delete(*args, **kwargs)
 
     def get_success_url(self):
         return f"/list_product/{self.object.company.id}"
 
     def get_object(self, queryset=None):
-        return self.model.objects.get(id=self.kwargs["product"])
+        product = self.model.objects.get(id=self.kwargs["product"])
+        if self.request.user.id == product.company.id:
+            return product
 
 
 class CreateResponse(CreateView):
